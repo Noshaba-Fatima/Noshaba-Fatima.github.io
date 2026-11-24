@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noshaba Fatima | AI Backend &amp; Generative AI Engineer</title>
+  <meta name="description" content="Developer portfolio of Noshaba Fatima — AI Backend & Generative AI Engineer (M.Sc. Data Science) building stateful LangGraph agents, Model Context Protocol (MCP) servers, RAG evaluation pipelines, and applied ML systems." />
+  <meta name="author" content="Noshaba Fatima" />
+
+  <!-- Google Fonts: Inter (Clean UI Typography) & JetBrains Mono (IDE Code, Terminal & Badges) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+          },
+          colors: {
+            obsidian: '#09090B',
+            surface: {
+              900: '#111318',
+              800: '#161B22',
+              700: '#1E242E',
+            },
+            accent: {
+              cyan: '#22D3EE',
+              emerald: '#34D399',
+              violet: '#A78BFA',
+            },
+          },
+          boxShadow: {
+            'ide': '0 24px 60px -15px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(39, 39, 42, 0.9)',
+            'glow-cyan': '0 0 28px -6px rgba(34, 211, 238, 0.22)',
+            'glow-emerald': '0 0 28px -6px rgba(52, 211, 153, 0.22)',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-[#09090B] text-[#F4F4F5] font-sans antialiased selection:bg-[#22D3EE]/25 selection:text-[#22D3EE] overflow-x-hidden">
+
+  <!-- ===================================================================== -->
+  <!-- 1. STICKY DARK GLASSMORPHISM NAVBAR                                   -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-[#09090B]/90 backdrop-blur-md border-b border-zinc-800">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4" aria-label="Primary Navigation">
+      <!-- Left: Terminal Prompt Logo with Cyan Cursor -->
+      <a href="#top" class="inline-flex items-center gap-1.5 font-mono text-sm sm:text-base font-semibold tracking-tight text-[#F4F4F5] hover:text-white transition-colors focus:outline-none">
+        <span class="text-[#34D399]">~</span><span class="text-zinc-500">/</span><span>noshaba.fatima</span>
+        <span class="inline-block w-2 h-4 bg-[#22D3EE] animate-pulse ml-0.5" aria-hidden="true"></span>
+      </a>
+
+      <!-- Center Jump Links -->
+      <div class="hidden md:flex items-center gap-6 font-mono text-xs text-[#A1A1AA]">
+        <a href="#strengths" class="hover:text-[#22D3EE] transition-colors">Strengths</a>
+        <a href="#projects" class="hover:text-[#22D3EE] transition-colors">Projects</a>
+        <a href="#stack" class="hover:text-[#22D3EE] transition-colors">Stack</a>
+        <a href="#hackathons" class="hover:text-[#22D3EE] transition-colors">Hackathons</a>
+        <a href="#credentials" class="hover:text-[#22D3EE] transition-colors">Credentials</a>
+      </div>
+
+      <!-- Right CTA: Resume.pdf + Mobile Menu Trigger -->
+      <div class="flex items-center gap-2.5">
+        <a
+          href="https://drive.google.com/file/d/1N-yMPHfVpf_drbVb1L0yGOuPd3HNkDSi/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-[#111318] border border-[#22D3EE]/50 text-[#22D3EE] hover:bg-[#22D3EE]/10 hover:border-[#22D3EE] font-mono text-xs font-semibold transition-all"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          <span>Resume.pdf</span>
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="md:hidden inline-flex items-center justify-center p-2.5 rounded-lg text-[#A1A1AA] hover:text-white hover:bg-zinc-800/80 border border-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#22D3EE] transition-colors"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <svg id="icon-hamburger" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#111318] border-b border-zinc-800 px-4 pt-2 pb-5 space-y-1">
+      <a href="#strengths" class="mobile-nav-link block px-3 py-2.5 rounded-lg font-mono text-xs text-[#A1A1AA] hover:bg-zinc-800/70 hover:text-[#22D3EE] transition-colors">Strengths</a>
+      <a href="#projects" class="mobile-nav-link block px-3 py-2.5 rounded-lg font-mono text-xs text-[#A1A1AA] hover:bg-zinc-800/70 hover:text-[#22D3EE] transition-colors">Projects</a>
+      <a href="#stack" class="mobile-nav-link block px-3 py-2.5 rounded-lg font-mono text-xs text-[#A1A1AA] hover:bg-zinc-800/70 hover:text-[#22D3EE] transition-colors">Stack</a>
+      <a href="#hackathons" class="mobile-nav-link block px-3 py-2.5 rounded-lg font-mono text-xs text-[#A1A1AA] hover:bg-zinc-800/70 hover:text-[#22D3EE] transition-colors">Hackathons</a>
+      <a href="#credentials" class="mobile-nav-link block px-3 py-2.5 rounded-lg font-mono text-xs text-[#A1A1AA] hover:bg-zinc-800/70 hover:text-[#22D3EE] transition-colors">Credentials</a>
+      <a
+        href="https://drive.google.com/file/d/1N-yMPHfVpf_drbVb1L0yGOuPd3HNkDSi/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-nav-link mt-2 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg border border-[#22D3EE]/50 text-[#22D3EE] hover:bg-[#22D3EE]/10 font-mono text-xs font-semibold transition-colors"
+      >
+        <span>Resume.pdf</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 2. HERO SECTION (CODE-FIRST STRENGTHS SHOWCASE)                       -->
+  <!-- ===================================================================== -->
+  <section id="top" class="relative bg-[#09090B] border-b border-zinc-800 overflow-hidden">
+    <!-- Subtle Blueprint Grid & Ambient Glows -->
+    <div
+      class="absolute inset-0 pointer-events-none opacity-40"
+      style="background-image: linear-gradient(to right, rgba(39, 39, 42, 0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(39, 39, 42, 0.35) 1px, transparent 1px); background-size: 40px 40px;"
+      aria-hidden="true"
+    ></div>
+    <div class="absolute -top-28 left-1/4 w-96 h-96 rounded-full bg-[#22D3EE]/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-28 right-1/4 w-96 h-96 rounded-full bg-[#A78BFA]/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+        <!-- Left Column (5 cols): Compact Identity, 1-Line Tagline & Action Buttons -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Compact Availability Pill -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#111318] border border-zinc-800 font-mono text-[11px] font-semibold tracking-wider text-[#34D399]">
+            <span class="w-2 h-2 rounded-full bg-[#34D399] animate-pulse"></span>
+            <span>OPEN TO ROLES // REMOTE &amp; LUCKNOW</span>
+          </div>
+
+          <!-- Name & Monospace Subtitle -->
+          <div class="space-y-2.5">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#F4F4F5] leading-[1.08]">
+              Noshaba Fatima
+            </h1>
+            <p class="font-mono text-sm sm:text-base font-medium text-[#22D3EE]">
+              Generative AI &amp; Data Science Engineer
+            </p>
+          </div>
+
+          <!-- Ultra-Concise 1-Line Tagline -->
+          <p class="text-[#A1A1AA] text-sm sm:text-base leading-relaxed">
+            M.Sc. Data Science builder shipping stateful agents, evaluated RAG pipelines, and explainable ML.
+          </p>
+
+          <!-- Primary Action Buttons -->
+          <div class="pt-1 flex flex-wrap items-center gap-2.5">
+            <!-- View Projects (Cyan Solid) -->
+            <a
+              href="#projects"
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#22D3EE] hover:bg-[#38BDF8] text-[#09090B] font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-[#22D3EE]/15"
+            >
+              <span>View Projects</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+
+            <!-- Resume PDF -->
+            <a
+              href="https://drive.google.com/file/d/1N-yMPHfVpf_drbVb1L0yGOuPd3HNkDSi/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-[#111318] border border-zinc-700 hover:border-[#22D3EE]/70 text-[#F4F4F5] hover:text-[#22D3EE] text-xs sm:text-sm font-medium transition-all"
+            >
+              <svg class="w-4 h-4 text-[#22D3EE]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Resume PDF</span>
+            </a>
+
+            <!-- GitHub -->
+            <a
+              href="https://github.com/Noshaba-Fatima"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-[#111318] border border-zinc-800 hover:border-zinc-600 text-[#A1A1AA] hover:text-white text-xs sm:text-sm font-medium transition-all"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              <span>GitHub</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href="https://www.linkedin.com/in/noshaba-fatima-alvi-020108219/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-[#111318] border border-zinc-800 hover:border-zinc-600 text-[#A1A1AA] hover:text-white text-xs sm:text-sm font-medium transition-all"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <!-- One-Click Copy Email -->
+            <button
+              type="button"
+              data-copy-email
+              data-default-label="Copy Email"
+              class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-[#111318] border border-zinc-800 hover:border-[#34D399]/60 text-[#A1A1AA] hover:text-[#34D399] text-xs sm:text-sm font-medium transition-all"
+            >
+              <svg class="w-4 h-4 text-[#34D399]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span class="copy-label">Copy Email</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column (7 cols): Interactive IDE Window with Runnable Output -->
+        <div id="code-showcase" class="lg:col-span-7">
+          <div class="rounded-2xl bg-[#111318] border border-zinc-800 shadow-ide overflow-hidden">
+            <!-- IDE Top Window Chrome -->
+            <div class="px-4 py-3 bg-[#161B22] border-b border-zinc-800 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2" aria-hidden="true">
+                <span class="w-3 h-3 rounded-full bg-[#FF5F56]/90"></span>
+                <span class="w-3 h-3 rounded-full bg-[#FFBD2E]/90"></span>
+                <span class="w-3 h-3 rounded-full bg-[#27C93F]/90"></span>
+              </div>
+
+              <span id="ide-filepath" class="font-mono text-[11px] text-zinc-400 truncate">
+                noshaba_fatima.py
+              </span>
+
+              <div class="flex items-center gap-2 shrink-0">
+                <!-- Emerald Run Button -->
+                <button
+                  id="run-code-btn"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#34D399] hover:bg-[#10B981] text-[#09090B] font-mono text-[11px] font-bold transition-colors shadow-sm"
+                >
+                  <span>&#9654; Run</span>
+                </button>
+
+                <!-- Copy Code Button -->
+                <button
+                  id="copy-code-btn"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#111318] hover:bg-zinc-800 border border-zinc-700 text-[#A1A1AA] hover:text-[#22D3EE] font-mono text-[11px] transition-colors"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  <span id="copy-code-label">Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- IDE Clickable File Tabs -->
+            <div class="flex items-center bg-[#09090B]/80 border-b border-zinc-800 overflow-x-auto" role="tablist" aria-label="Python profile and architecture files">
+              <button
+                type="button"
+                data-code-tab="noshaba_fatima"
+                role="tab"
+                aria-selected="true"
+                class="code-tab-btn px-4 py-2.5 font-mono text-xs flex items-center gap-2 border-r border-zinc-800 border-t-2 border-t-[#22D3EE] bg-[#111318] text-[#F4F4F5] shrink-0 transition-colors"
+              >
+                <span class="text-[#22D3EE]">py</span>
+                <span>noshaba_fatima.py</span>
+              </button>
+
+              <button
+                type="button"
+                data-code-tab="talentlens_graph"
+                role="tab"
+                aria-selected="false"
+                class="code-tab-btn px-4 py-2.5 font-mono text-xs flex items-center gap-2 border-r border-zinc-800 border-t-2 border-t-transparent text-zinc-400 hover:text-zinc-200 hover:bg-[#111318]/50 shrink-0 transition-colors"
+              >
+                <span class="text-[#A78BFA]">py</span>
+                <span>talentlens_graph.py</span>
+              </button>
+
+              <button
+                type="button"
+                data-code-tab="mcp_protocol"
+                role="tab"
+                aria-selected="false"
+                class="code-tab-btn px-4 py-2.5 font-mono text-xs flex items-center gap-2 border-r border-zinc-800 border-t-2 border-t-transparent text-zinc-400 hover:text-zinc-200 hover:bg-[#111318]/50 shrink-0 transition-colors"
+              >
+                <span class="text-[#34D399]">py</span>
+                <span>mcp_protocol.py</span>
+              </button>
+            </div>
+
+            <!-- IDE Syntax-Highlighted Code Viewport -->
+            <div class="p-4 sm:p-5 overflow-x-auto bg-[#111318]">
+              <div id="ide-code-display" class="font-mono text-[11.5px] sm:text-xs leading-relaxed min-w-[490px]"></div>
+            </div>
+
+            <!-- Interactive Terminal Drawer at Bottom of IDE -->
+            <div class="bg-[#09090B] border-t border-zinc-800">
+              <div class="px-4 py-1.5 bg-[#161B22] border-b border-zinc-800/80 flex items-center justify-between font-mono text-[11px]">
+                <div class="flex items-center gap-2">
+                  <span class="text-[#34D399] font-semibold">TERMINAL</span>
+                  <span id="terminal-badge" class="px-2 py-0.5 rounded bg-[#111318] border border-zinc-700 text-zinc-400 text-[10px]">
+                    Click &#9654; Run to execute
+                  </span>
+                </div>
+                <span class="text-zinc-500">Python 3.11 &bull; UTF-8</span>
+              </div>
+              <div id="terminal-output" class="px-4 py-3 font-mono text-[11.5px] leading-relaxed space-y-1 min-h-[84px]">
+                <div class="text-zinc-400">
+                  <span class="text-[#34D399]">$</span> python <span id="terminal-cmd-file" class="text-[#F4F4F5]">noshaba_fatima.py</span>
+                </div>
+                <div class="text-zinc-500">
+                  # Ready. Press <span class="text-[#34D399] font-semibold">&#9654; Run</span> in the top toolbar to run live verification checks.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 3. SECTION 01 // strengths_as_code (3 EXECUTABLE CODE MODULES)        -->
+  <!-- ===================================================================== -->
+  <section id="strengths" class="py-20 sm:py-24 bg-[#09090B] border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#22D3EE] font-semibold mb-2">
+          01 // strengths_as_code
+        </p>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#F4F4F5] tracking-tight">Core Engineering Strengths</h2>
+      </div>
+
+      <!-- 3 Side-by-Side Syntax-Highlighted Python Module Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Module Card 1: 01_agentic_systems.py -->
+        <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#22D3EE]/50 overflow-hidden flex flex-col transition-colors">
+          <div class="px-4 py-3 bg-[#161B22] border-b border-zinc-800 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-[#22D3EE] shrink-0"></span>
+              <span class="font-mono text-xs font-semibold text-[#F4F4F5] truncate">01_agentic_systems.py</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-[#22D3EE]/10 border border-[#22D3EE]/30 text-[#22D3EE] font-mono text-[10px] font-semibold shrink-0">
+              Orchestration &amp; MCP
+            </span>
+          </div>
+          <div class="p-4 overflow-x-auto flex-1 bg-[#111318]">
+            <pre class="font-mono text-[11.5px] leading-relaxed text-zinc-200"><code><span class="text-[#A78BFA]">from</span> pydantic <span class="text-[#A78BFA]">import</span> BaseModel, ValidationError
+<span class="text-[#A78BFA]">from</span> langgraph.graph <span class="text-[#A78BFA]">import</span> StateGraph, END
+
+<span class="text-[#A78BFA]">class</span> <span class="text-[#22D3EE]">ToolCall</span>(BaseModel):
+    server: <span class="text-[#22D3EE]">str</span>
+    method: <span class="text-[#22D3EE]">str</span>
+    args: <span class="text-[#22D3EE]">dict</span>
+
+<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">dispatch_mcp_tool</span>(payload: <span class="text-[#22D3EE]">dict</span>, mcp_client):
+    <span class="text-[#71717A]"># Typed schema guardrails + deterministic fallback</span>
+    <span class="text-[#A78BFA]">try</span>:
+        call = ToolCall.model_validate(payload)
+        <span class="text-[#A78BFA]">return</span> mcp_client.invoke(call.server, call.method, call.args)
+    <span class="text-[#A78BFA]">except</span> ValidationError <span class="text-[#A78BFA]">as</span> err:
+        <span class="text-[#A78BFA]">return</span> {<span class="text-[#34D399]">"status"</span>: <span class="text-[#34D399]">"fallback"</span>, <span class="text-[#34D399]">"reason"</span>: err.errors()}
+
+<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">compile_agent</span>(router_fn, tool_node):
+    wf = StateGraph(<span class="text-[#22D3EE]">dict</span>)
+    wf.add_node(<span class="text-[#34D399]">"tools"</span>, tool_node)
+    wf.add_conditional_edges(<span class="text-[#34D399]">"tools"</span>, router_fn, {<span class="text-[#34D399]">"done"</span>: END})
+    <span class="text-[#A78BFA]">return</span> wf.compile()</code></pre>
+          </div>
+        </div>
+
+        <!-- Module Card 2: 02_rag_and_evals.py -->
+        <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#34D399]/50 overflow-hidden flex flex-col transition-colors">
+          <div class="px-4 py-3 bg-[#161B22] border-b border-zinc-800 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-[#34D399] shrink-0"></span>
+              <span class="font-mono text-xs font-semibold text-[#F4F4F5] truncate">02_rag_and_evals.py</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-[#34D399]/10 border border-[#34D399]/30 text-[#34D399] font-mono text-[10px] font-semibold shrink-0">
+              LLMOps &amp; Testing
+            </span>
+          </div>
+          <div class="p-4 overflow-x-auto flex-1 bg-[#111318]">
+            <pre class="font-mono text-[11.5px] leading-relaxed text-zinc-200"><code><span class="text-[#A78BFA]">import</span> pytest
+<span class="text-[#A78BFA]">from</span> langsmith <span class="text-[#A78BFA]">import</span> traceable  <span class="text-[#71717A]"># active roadmap</span>
+
+<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">recall_at_k</span>(retrieved: <span class="text-[#22D3EE]">list</span>[<span class="text-[#22D3EE]">str</span>], gold: <span class="text-[#22D3EE]">set</span>[<span class="text-[#22D3EE]">str</span>], k: <span class="text-[#22D3EE]">int</span> = <span class="text-[#F59E0B]">5</span>) -&gt; <span class="text-[#22D3EE]">float</span>:
+    hits = <span class="text-[#22D3EE]">len</span>(<span class="text-[#22D3EE]">set</span>(retrieved[:k]) &amp; gold)
+    <span class="text-[#A78BFA]">return</span> hits / <span class="text-[#22D3EE]">max</span>(<span class="text-[#22D3EE]">len</span>(gold), <span class="text-[#F59E0B]">1</span>)
+
+<span class="text-[#F59E0B]">@traceable</span>(run_type=<span class="text-[#34D399]">"chain"</span>, name=<span class="text-[#34D399]">"rag_component_eval"</span>)
+<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">eval_rag_components</span>(retriever, generator, golden_set):
+    scores = []
+    <span class="text-[#A78BFA]">for</span> case <span class="text-[#A78BFA]">in</span> golden_set:
+        ctx = retriever.search(case[<span class="text-[#34D399]">"query"</span>], top_k=<span class="text-[#F59E0B]">5</span>)
+        ans = generator.score(case[<span class="text-[#34D399]">"query"</span>], ctx)
+        scores.append((recall_at_k(ctx, case[<span class="text-[#34D399]">"gold"</span>]), ans.faithful))
+    <span class="text-[#A78BFA]">return</span> scores
+
+<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">test_retriever_floor</span>():
+    <span class="text-[#A78BFA]">assert</span> recall_at_k([<span class="text-[#34D399]">"c1"</span>, <span class="text-[#34D399]">"c4"</span>], {<span class="text-[#34D399]">"c1"</span>}, k=<span class="text-[#F59E0B]">2</span>) == <span class="text-[#F59E0B]">1.0</span></code></pre>
+          </div>
+        </div>
+
+        <!-- Module Card 3: 03_ml_baselines_xai.py -->
+        <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#A78BFA]/50 overflow-hidden flex flex-col transition-colors">
+          <div class="px-4 py-3 bg-[#161B22] border-b border-zinc-800 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 min-w-0">
+              <span class="w-2 h-2 rounded-full bg-[#A78BFA] shrink-0"></span>
+              <span class="font-mono text-xs font-semibold text-[#F4F4F5] truncate">03_ml_baselines_xai.py</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-[#A78BFA]/10 border border-[#A78BFA]/30 text-[#A78BFA] font-mono text-[10px] font-semibold shrink-0">
+              Data Science &amp; XAI
+            </span>
+          </div>
+          <div class="p-4 overflow-x-auto flex-1 bg-[#111318]">
+            <pre class="font-mono text-[11.5px] leading-relaxed text-zinc-200"><code><span class="text-[#A78BFA]">import</span> shap
+<span class="text-[#A78BFA]">from</span> sklearn.linear_model <span class="text-[#A78BFA]">import</span> Ridge
+<span class="text-[#A78BFA]">from</span> sklearn.ensemble <span class="text-[#A78BFA]">import</span> RandomForestRegressor
+<span class="text-[#A78BFA]">from</span> sklearn.model_selection <span class="text-[#A78BFA]">import</span> cross_val_score
+
+<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">benchmark_and_explain</span>(X, y):
+    <span class="text-[#71717A]"># 1. Benchmark linear baseline before tree ensembles</span>
+    baseline = Ridge(alpha=<span class="text-[#F59E0B]">1.0</span>)
+    forest = RandomForestRegressor(n_estimators=<span class="text-[#F59E0B]">200</span>, random_state=<span class="text-[#F59E0B]">42</span>)
+
+    base_rmse = -cross_val_score(baseline, X, y, scoring=<span class="text-[#34D399]">"neg_root_mean_squared_error"</span>).mean()
+    tree_rmse = -cross_val_score(forest, X, y, scoring=<span class="text-[#34D399]">"neg_root_mean_squared_error"</span>).mean()
+
+    <span class="text-[#71717A]"># 2. Global + local SHAP feature attribution</span>
+    forest.fit(X, y)
+    shap_values = shap.TreeExplainer(forest).shap_values(X)
+    <span class="text-[#A78BFA]">return</span> {<span class="text-[#34D399]">"baseline_rmse"</span>: base_rmse, <span class="text-[#34D399]">"rf_rmse"</span>: tree_rmse, <span class="text-[#34D399]">"shap"</span>: shap_values}</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 4. SECTION 02 // verified_projects (FILTERABLE 5-PROJECT GRID)        -->
+  <!-- ===================================================================== -->
+  <section id="projects" class="py-20 sm:py-24 bg-[#09090B] border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Header & Filter Pills -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-widest text-[#34D399] font-semibold mb-2">
+            02 // verified_projects
+          </p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-[#F4F4F5] tracking-tight">Verified Engineering Builds</h2>
+          <p class="mt-2 text-[#A1A1AA] text-sm sm:text-base max-w-xl">
+            Click <span class="font-mono text-[#22D3EE]">Inspect Architecture</span> on any build to view its pipeline diagram, engineering decisions, and validation approach.
+          </p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="inline-flex flex-wrap items-center gap-1.5 bg-[#111318] p-1.5 rounded-xl border border-zinc-800" role="tablist" aria-label="Filter projects by category">
+          <button
+            type="button"
+            data-filter="all"
+            class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs font-semibold transition-all bg-[#22D3EE] text-[#09090B]"
+            aria-pressed="true"
+          >
+            All (5)
+          </button>
+          <button
+            type="button"
+            data-filter="agentic"
+            class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs font-medium transition-all text-[#A1A1AA] hover:text-white hover:bg-zinc-800/70"
+            aria-pressed="false"
+          >
+            GenAI &amp; Agents
+          </button>
+          <button
+            type="button"
+            data-filter="ml"
+            class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs font-medium transition-all text-[#A1A1AA] hover:text-white hover:bg-zinc-800/70"
+            aria-pressed="false"
+          >
+            ML &amp; Data Science
+          </button>
+        </div>
+      </div>
+
+      <!-- Responsive 5-Project Grid -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+
+        <!-- =============================================================== -->
+        <!-- PROJECT 1: TalentLens AI                                        -->
+        <!-- =============================================================== -->
+        <article
+          data-category="agentic"
+          class="project-card group bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#22D3EE]/50 p-6 sm:p-7 transition-all duration-200 flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-xs bg-[#22D3EE]/10 text-[#22D3EE] border border-[#22D3EE]/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE]"></span>
+                GenAI &amp; Agents
+              </span>
+              <span class="font-mono text-[11px] text-zinc-500">01 / LangGraph</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#F4F4F5] group-hover:text-[#22D3EE] transition-colors">
+              TalentLens AI
+            </h3>
+            <p class="mt-2.5 text-[#A1A1AA] text-sm leading-relaxed">
+              Automated recruitment assessment pipeline using LangGraph, Groq, Gemini, Streamlit, and pytest, with programmatic DOCX report generation.
+            </p>
+
+            <!-- Highlight Badge -->
+            <div class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#161B22] border border-[#A78BFA]/40 font-mono text-[11px] text-[#A78BFA]">
+              <span class="w-2 h-2 rounded-full bg-[#A78BFA] animate-pulse shrink-0"></span>
+              <span>Roadmap: LangSmith tracing &amp; latency telemetry in progress</span>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">LangGraph</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Groq</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Gemini</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Streamlit</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Pytest</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-zinc-800/90 flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              data-open-modal="talentlens"
+              class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#22D3EE] hover:text-white transition-colors focus:outline-none"
+            >
+              <span>Inspect Architecture</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            <a
+              href="https://github.com/Noshaba-Fatima/TalentLens-AI"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium text-[#F4F4F5] bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#22D3EE]/50 transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- PROJECT 2: MCP Client & Server Architecture                     -->
+        <!-- =============================================================== -->
+        <article
+          data-category="agentic"
+          class="project-card group bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#22D3EE]/50 p-6 sm:p-7 transition-all duration-200 flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-xs bg-[#22D3EE]/10 text-[#22D3EE] border border-[#22D3EE]/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE]"></span>
+                GenAI &amp; Agents
+              </span>
+              <span class="font-mono text-[11px] text-zinc-500">02 / Protocol &amp; Tools</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#F4F4F5] group-hover:text-[#22D3EE] transition-colors">
+              MCP Client &amp; Server Architecture
+            </h3>
+            <p class="mt-2.5 text-[#A1A1AA] text-sm leading-relaxed">
+              Custom Model Context Protocol client-server implementation built from scratch for structured JSON-RPC tool discovery, context injection, and decoupled LLM tool execution.
+            </p>
+
+            <!-- Badge -->
+            <div class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#161B22] border border-[#22D3EE]/35 font-mono text-[11px] text-[#22D3EE]">
+              <span class="w-2 h-2 rounded-full bg-[#22D3EE] shrink-0"></span>
+              <span>Custom Protocol Implementation</span>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">MCP</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">JSON-RPC 2.0</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Pydantic</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-zinc-800/90 flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              data-open-modal="mcp-architecture"
+              class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#22D3EE] hover:text-white transition-colors focus:outline-none"
+            >
+              <span>Inspect Architecture</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            <a
+              href="https://github.com/Noshaba-Fatima"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium text-[#F4F4F5] bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#22D3EE]/50 transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- PROJECT 3: AI Resume Screener & RAG Evaluation Pipeline         -->
+        <!-- =============================================================== -->
+        <article
+          data-category="agentic"
+          class="project-card group bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#22D3EE]/50 p-6 sm:p-7 transition-all duration-200 flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-xs bg-[#22D3EE]/10 text-[#22D3EE] border border-[#22D3EE]/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE]"></span>
+                GenAI &amp; Agents
+              </span>
+              <span class="font-mono text-[11px] text-zinc-500">03 / RAG &amp; Evals</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#F4F4F5] group-hover:text-[#22D3EE] transition-colors">
+              AI Resume Screener &amp; RAG Evaluation Pipeline
+            </h3>
+            <p class="mt-2.5 text-[#A1A1AA] text-sm leading-relaxed">
+              End-to-end PDF parsing, semantic chunking, FAISS vector indexing, and LLM evaluation validated on 30 synthetic resumes.
+            </p>
+
+            <!-- Highlight Badge -->
+            <div class="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#161B22] border border-[#34D399]/40 font-mono text-[11px] text-[#34D399]">
+              <span class="w-2 h-2 rounded-full bg-[#34D399] animate-pulse shrink-0"></span>
+              <span>Roadmap: Full-component retriever + generator evaluation in progress</span>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">FAISS</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Embeddings</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">RAG Eval</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-zinc-800/90 flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              data-open-modal="rag-screener"
+              class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#22D3EE] hover:text-white transition-colors focus:outline-none"
+            >
+              <span>Inspect Architecture</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            <a
+              href="https://github.com/Noshaba-Fatima"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium text-[#F4F4F5] bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#22D3EE]/50 transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- PROJECT 4: UIDAI Aadhaar Anomaly Analysis                       -->
+        <!-- =============================================================== -->
+        <article
+          data-category="ml"
+          class="project-card group bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#A78BFA]/50 p-6 sm:p-7 transition-all duration-200 flex flex-col justify-between"
+        >
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-xs bg-[#A78BFA]/10 text-[#A78BFA] border border-[#A78BFA]/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#A78BFA]"></span>
+                ML &amp; Data Science
+              </span>
+              <span class="font-mono text-[11px] text-zinc-500">UIDAI Hackathon 2026</span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#F4F4F5] group-hover:text-[#A78BFA] transition-colors">
+              UIDAI Aadhaar Anomaly Analysis
+            </h3>
+            <p class="mt-2.5 text-[#A1A1AA] text-sm leading-relaxed">
+              Demographic enrollment anomaly severity classification and time-series forecasting built for the UIDAI Data Hackathon 2026.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Pandas</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Scikit-Learn</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Time-Series Forecasting</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-zinc-800/90 flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              data-open-modal="uidai-anomaly"
+              class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#A78BFA] hover:text-white transition-colors focus:outline-none"
+            >
+              <span>Inspect Architecture</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            <a
+              href="https://github.com/Noshaba-Fatima/Aadhar-data-analysis"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium text-[#F4F4F5] bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#A78BFA]/50 transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- =============================================================== -->
+        <!-- PROJECT 5: Student Exam Score Predictor                         -->
+        <!-- =============================================================== -->
+        <article
+          data-category="ml"
+          class="project-card group bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#A78BFA]/50 p-6 sm:p-7 transition-all duration-200 flex flex-col justify-between md:col-span-2 lg:col-span-1"
+        >
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md font-mono text-xs bg-[#A78BFA]/10 text-[#A78BFA] border border-[#A78BFA]/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#A78BFA]"></span>
+                ML &amp; Data Science
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-mono text-[11px] bg-[#34D399]/10 text-[#34D399] border border-[#34D399]/30">
+                Streamlit Cloud
+              </span>
+            </div>
+
+            <h3 class="text-xl font-bold text-[#F4F4F5] group-hover:text-[#A78BFA] transition-colors">
+              Student Exam Score Predictor
+            </h3>
+            <p class="mt-2.5 text-[#A1A1AA] text-sm leading-relaxed">
+              End-to-end ML web application comparing Linear Regression and Random Forest models with feature preprocessing and interactive inference on Streamlit Cloud.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-1.5">
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Python</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Scikit-Learn</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Random Forest</span>
+              <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-300 font-mono text-xs">Streamlit Cloud</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-zinc-800/90 flex flex-wrap items-center justify-between gap-3">
+            <button
+              type="button"
+              data-open-modal="exam-predictor"
+              class="inline-flex items-center gap-1.5 font-mono text-xs font-semibold text-[#A78BFA] hover:text-white transition-colors focus:outline-none"
+            >
+              <span>Inspect Architecture</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+
+            <a
+              href="https://github.com/Noshaba-Fatima/student-score-predictor"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium text-[#F4F4F5] bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#A78BFA]/50 transition-colors"
+            >
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 5. SECTION 03 // tech_stack (3 STRUCTURED TERMINAL CARDS)             -->
+  <!-- ===================================================================== -->
+  <section id="stack" class="py-20 sm:py-24 bg-[#09090B] border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#22D3EE] font-semibold mb-2">
+          03 // tech_stack
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-[#F4F4F5] tracking-tight">Technical Stack</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: GenAI, Agents & LLMOps -->
+        <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#22D3EE]/45 p-6 transition-colors">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-mono text-xs font-semibold text-[#22D3EE]">01 // AGENTIC &amp; LLMOPS</span>
+            <svg class="w-5 h-5 text-[#22D3EE]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-[#F4F4F5] mb-4">GenAI, Agents &amp; LLMOps</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">LangGraph</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">LangChain</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Model Context Protocol (MCP)</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">RAG Pipelines</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">FAISS</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Pydantic</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Prompt Engineering</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Pytest</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#A78BFA]/10 border border-[#A78BFA]/35 text-[#A78BFA] font-mono text-xs">LangSmith (In Progress)</span>
+          </div>
+        </div>
+
+        <!-- Card 2: ML, Data Science & XAI -->
+        <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#A78BFA]/45 p-6 transition-colors">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-mono text-xs font-semibold text-[#A78BFA]">02 // DATA SCIENCE &amp; XAI</span>
+            <svg class="w-5 h-5 text-[#A78BFA]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-[#F4F4F5] mb-4">ML, Data Science &amp; XAI</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Python (NumPy, Pandas, Scikit-Learn)</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">SHAP</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Statistical Hypothesis Testing</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Time-Series Forecasting</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">R</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">SPSS</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Power BI</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Tableau</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Backend, Databases & DevOps -->
+        <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#34D399]/45 p-6 transition-colors">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-mono text-xs font-semibold text-[#34D399]">03 // BACKEND &amp; DEVOPS</span>
+            <svg class="w-5 h-5 text-[#34D399]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-[#F4F4F5] mb-4">Backend, Databases &amp; DevOps</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">FastAPI</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">SQL (MySQL, PostgreSQL, SQLAlchemy)</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Docker</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Git &amp; GitHub</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Linux/Ubuntu CLI</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Streamlit Cloud</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">VS Code</span>
+            <span class="px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs">Google Colab</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 6. SECTION 04 // hackathons_and_milestones (VERTICAL TERMINAL LOG)    -->
+  <!-- ===================================================================== -->
+  <section id="hackathons" class="py-20 sm:py-24 bg-[#09090B] border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#A78BFA] font-semibold mb-2">
+          04 // hackathons_and_milestones
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-[#F4F4F5] tracking-tight">Hackathons &amp; Milestones</h2>
+      </div>
+
+      <!-- Vertical Terminal Log Timeline -->
+      <div class="relative border-l border-zinc-800 ml-3 sm:ml-4 space-y-5">
+
+        <!-- Log 1: Smart India Hackathon (SIH) 2026 -->
+        <div class="relative pl-7 sm:pl-9">
+          <span class="absolute -left-[6.5px] top-6 w-3 h-3 rounded-full bg-[#22D3EE] ring-4 ring-[#09090B]"></span>
+          <div class="bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#22D3EE]/50 p-6 transition-colors">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-[#22D3EE]/10 border border-[#22D3EE]/35 text-[#22D3EE] font-mono text-xs font-semibold">
+                  2026
+                </span>
+                <h3 class="text-lg font-bold text-[#F4F4F5]">
+                  Smart India Hackathon (SIH) 2026 &mdash; Top 50 Teams (College Internal Round)
+                </h3>
+              </div>
+              <span class="font-mono text-xs text-zinc-400">Team Aureon*</span>
+            </div>
+            <p class="text-[#A1A1AA] text-sm leading-relaxed">
+              Selected among the top 50 teams at Integral University as part of Team Aureon*.
+            </p>
+          </div>
+        </div>
+
+        <!-- Log 2: 1st Place — Integral University "Prompt War" -->
+        <div class="relative pl-7 sm:pl-9">
+          <span class="absolute -left-[6.5px] top-6 w-3 h-3 rounded-full bg-[#34D399] ring-4 ring-[#09090B]"></span>
+          <div class="bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#34D399]/50 p-6 transition-colors">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-[#34D399]/10 border border-[#34D399]/35 text-[#34D399] font-mono text-xs font-semibold">
+                  FEB 2026
+                </span>
+                <h3 class="text-lg font-bold text-[#F4F4F5]">1st Place &mdash; Integral University &ldquo;Prompt War&rdquo;</h3>
+              </div>
+              <span class="font-mono text-xs text-zinc-400">60&ndash;70+ Participants</span>
+            </div>
+            <p class="text-[#A1A1AA] text-sm leading-relaxed">
+              Ranked 1st out of 60&ndash;70+ participants in competitive prompt engineering and constraint reasoning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Log 3: UIDAI Data Hackathon 2026 -->
+        <div class="relative pl-7 sm:pl-9">
+          <span class="absolute -left-[6.5px] top-6 w-3 h-3 rounded-full bg-[#A78BFA] ring-4 ring-[#09090B]"></span>
+          <div class="bg-[#111318] rounded-2xl border border-zinc-800 hover:border-[#A78BFA]/50 p-6 transition-colors">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-[#A78BFA]/10 border border-[#A78BFA]/35 text-[#A78BFA] font-mono text-xs font-semibold">
+                  JAN 2026
+                </span>
+                <h3 class="text-lg font-bold text-[#F4F4F5]">UIDAI Data Hackathon 2026</h3>
+              </div>
+              <span class="font-mono text-xs text-zinc-400">Team UIDAI_3799</span>
+            </div>
+            <p class="text-[#A1A1AA] text-sm leading-relaxed">
+              Built demographic anomaly severity classification and forecasting models as Team UIDAI_3799.
+            </p>
+          </div>
+        </div>
+
+        <!-- Log 4: Odoo x FLUX Lucknow Hackathon '26 -->
+        <div class="relative pl-7 sm:pl-9">
+          <span class="absolute -left-[6.5px] top-6 w-3 h-3 rounded-full bg-zinc-500 ring-4 ring-[#09090B]"></span>
+          <div class="bg-[#111318] rounded-2xl border border-zinc-800 hover:border-zinc-700 p-6 transition-colors">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-zinc-800 border border-zinc-700 text-zinc-300 font-mono text-xs font-semibold">
+                  OCT 2026
+                </span>
+                <h3 class="text-lg font-bold text-[#F4F4F5]">Odoo x FLUX Lucknow Hackathon &rsquo;26</h3>
+              </div>
+            </div>
+            <p class="text-[#A1A1AA] text-sm leading-relaxed">
+              Rapid full-stack/AI prototyping under hackathon constraints.
+            </p>
+          </div>
+        </div>
+
+        <!-- Log 5: Data Sprint 2026 & Google India "The Big Code" Challenge -->
+        <div class="relative pl-7 sm:pl-9">
+          <span class="absolute -left-[6.5px] top-6 w-3 h-3 rounded-full bg-zinc-500 ring-4 ring-[#09090B]"></span>
+          <div class="bg-[#111318] rounded-2xl border border-zinc-800 hover:border-zinc-700 p-6 transition-colors">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-md bg-zinc-800 border border-zinc-700 text-zinc-300 font-mono text-xs font-semibold">
+                  2026
+                </span>
+                <h3 class="text-lg font-bold text-[#F4F4F5]">Data Sprint 2026 (NIST University) &amp; Google India &ldquo;The Big Code&rdquo; Challenge</h3>
+              </div>
+            </div>
+            <p class="text-[#A1A1AA] text-sm leading-relaxed">
+              Qualified coding and ML rounds.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 7. SECTION 05 // education_and_certifications                         -->
+  <!-- ===================================================================== -->
+  <section id="credentials" class="py-20 sm:py-24 bg-[#09090B] border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <p class="font-mono text-xs uppercase tracking-widest text-[#34D399] font-semibold mb-2">
+          05 // education_and_certifications
+        </p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-[#F4F4F5] tracking-tight">Education &amp; Verified Certifications</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- Left Column: Education -->
+        <div class="space-y-5">
+          <h3 class="font-mono text-xs uppercase tracking-wider text-zinc-400 font-semibold">Education</h3>
+
+          <!-- M.Sc. in Data Science -->
+          <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#22D3EE]/40 p-6 transition-colors">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h4 class="text-lg font-bold text-[#F4F4F5]">M.Sc. in Data Science</h4>
+                <p class="text-[#A1A1AA] text-sm mt-1">Integral University, Lucknow</p>
+              </div>
+              <span class="font-mono text-xs text-[#22D3EE] bg-[#161B22] px-2.5 py-1 rounded-md border border-zinc-800">
+                2025 &ndash; 2027
+              </span>
+            </div>
+          </div>
+
+          <!-- B.Sc. in PCM -->
+          <div class="rounded-2xl bg-[#111318] border border-zinc-800 hover:border-[#22D3EE]/40 p-6 transition-colors">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h4 class="text-lg font-bold text-[#F4F4F5]">B.Sc. in Physics, Chemistry &amp; Mathematics (PCM)</h4>
+                <p class="text-[#A1A1AA] text-sm mt-1">National PG College, Lucknow</p>
+              </div>
+              <span class="font-mono text-xs text-zinc-400 bg-[#161B22] px-2.5 py-1 rounded-md border border-zinc-800">
+                Graduated 2022
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Verified Certifications -->
+        <div class="space-y-5">
+          <h3 class="font-mono text-xs uppercase tracking-wider text-zinc-400 font-semibold">Verified Certifications</h3>
+
+          <div class="rounded-2xl bg-[#111318] border border-zinc-800 divide-y divide-zinc-800/90 overflow-hidden">
+            <!-- 1. Highlighted AWS Certification -->
+            <div class="p-4 sm:px-6 bg-[#161B22] flex items-start justify-between gap-4">
+              <div>
+                <p class="font-bold text-[#F4F4F5] text-sm sm:text-base">
+                  Machine Learning Essentials for Business and Technical Decision Makers
+                </p>
+                <p class="font-mono text-xs text-[#22D3EE] mt-1">Amazon Web Services (AWS)</p>
+              </div>
+              <span class="shrink-0 mt-0.5 px-2.5 py-0.5 rounded bg-[#22D3EE]/10 border border-[#22D3EE]/40 text-[#22D3EE] font-mono text-[11px] font-semibold">
+                AWS
+              </span>
+            </div>
+
+            <!-- 2. 5-Day AI Agents Intensive -->
+            <div class="p-4 sm:px-6 flex items-start justify-between gap-4 hover:bg-[#161B22]/60 transition-colors">
+              <div>
+                <p class="font-semibold text-[#F4F4F5] text-sm sm:text-base">5-Day AI Agents Intensive</p>
+                <p class="text-xs text-[#A1A1AA] mt-0.5">Google &amp; Kaggle</p>
+              </div>
+              <span class="shrink-0 mt-1.5 w-2 h-2 rounded-full bg-[#34D399]" aria-hidden="true"></span>
+            </div>
+
+            <!-- 3. SQL (Basic) -->
+            <div class="p-4 sm:px-6 flex items-center justify-between gap-4 hover:bg-[#161B22]/60 transition-colors">
+              <div>
+                <p class="font-semibold text-[#F4F4F5] text-sm sm:text-base">SQL (Basic)</p>
+                <p class="text-xs text-[#A1A1AA] mt-0.5">HackerRank</p>
+              </div>
+              <span class="shrink-0 w-2 h-2 rounded-full bg-[#34D399]" aria-hidden="true"></span>
+            </div>
+
+            <!-- 4. Python -->
+            <div class="p-4 sm:px-6 flex items-center justify-between gap-4 hover:bg-[#161B22]/60 transition-colors">
+              <div>
+                <p class="font-semibold text-[#F4F4F5] text-sm sm:text-base">Python</p>
+                <p class="text-xs text-[#A1A1AA] mt-0.5">Kaggle</p>
+              </div>
+              <span class="shrink-0 w-2 h-2 rounded-full bg-[#34D399]" aria-hidden="true"></span>
+            </div>
+
+            <!-- 5. Frontend Development (HTML) -->
+            <div class="p-4 sm:px-6 flex items-center justify-between gap-4 hover:bg-[#161B22]/60 transition-colors">
+              <div>
+                <p class="font-semibold text-[#F4F4F5] text-sm sm:text-base">Frontend Development (HTML)</p>
+                <p class="text-xs text-[#A1A1AA] mt-0.5">Great Learning</p>
+              </div>
+              <span class="shrink-0 w-2 h-2 rounded-full bg-[#A78BFA]" aria-hidden="true"></span>
+            </div>
+
+            <!-- 6. Shape AI Bootcamp -->
+            <div class="p-4 sm:px-6 flex items-center justify-between gap-4 hover:bg-[#161B22]/60 transition-colors">
+              <div>
+                <p class="font-semibold text-[#F4F4F5] text-sm sm:text-base">Shape AI Bootcamp</p>
+                <p class="text-xs text-[#A1A1AA] mt-0.5">Google Developers</p>
+              </div>
+              <span class="shrink-0 w-2 h-2 rounded-full bg-[#A78BFA]" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- 8. FOOTER & CONTACT ("LET'S BUILD SOMETHING REAL")                    -->
+  <!-- ===================================================================== -->
+  <footer id="contact" class="bg-[#09090B]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="rounded-2xl bg-[#111318] border border-zinc-800 p-8 sm:p-10 space-y-6">
+        <div class="max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-widest text-[#22D3EE] font-semibold mb-2">
+            $ connect --open-to-roles
+          </p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-[#F4F4F5] tracking-tight leading-snug">
+            Let&rsquo;s Build Something Real
+          </h2>
+          <p class="mt-2.5 text-[#A1A1AA] text-sm sm:text-base">
+            Open to Remote &amp; Lucknow-based Generative AI, AI Backend, and Data Science roles.
+          </p>
+        </div>
+
+        <!-- Direct Working Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <!-- Email Direct Mailto -->
+          <a
+            href="mailto:fatimanoshaba032@gmail.com"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#34D399] hover:bg-[#10B981] text-[#09090B] font-mono text-xs sm:text-sm font-bold transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Email: fatimanoshaba032@gmail.com</span>
+          </a>
+
+          <!-- One-Click Copy Email -->
+          <button
+            type="button"
+            data-copy-email
+            data-default-label="Copy Email"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#34D399]/60 text-[#F4F4F5] hover:text-[#34D399] font-mono text-xs sm:text-sm font-medium transition-colors"
+          >
+            <svg class="w-4 h-4 text-[#34D399]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span class="copy-label">Copy Email</span>
+          </button>
+
+          <!-- Resume PDF -->
+          <a
+            href="https://drive.google.com/file/d/1N-yMPHfVpf_drbVb1L0yGOuPd3HNkDSi/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#22D3EE]/60 text-[#F4F4F5] hover:text-[#22D3EE] font-mono text-xs sm:text-sm font-medium transition-colors"
+          >
+            <svg class="w-4 h-4 text-[#22D3EE]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Resume PDF</span>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/Noshaba-Fatima"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#A78BFA]/60 text-[#F4F4F5] hover:text-[#A78BFA] font-mono text-xs sm:text-sm font-medium transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+            <span>GitHub</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/noshaba-fatima-alvi-020108219/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#161B22] hover:bg-zinc-800 border border-zinc-700 hover:border-[#22D3EE]/60 text-[#F4F4F5] hover:text-[#22D3EE] font-mono text-xs sm:text-sm font-medium transition-colors"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" /></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright Bar -->
+      <div class="mt-12 pt-8 border-t border-zinc-800/90 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-500">
+        <p>&copy; 2026 Noshaba Fatima // Built with HTML, Tailwind CSS &amp; Vanilla JS</p>
+        <p>~/noshaba.fatima &bull; Lucknow, India</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE "INSPECT ARCHITECTURE" MODAL                              -->
+  <!-- ===================================================================== -->
+  <div
+    id="project-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div class="relative w-full max-w-2xl bg-[#111318] rounded-2xl shadow-2xl border border-zinc-700 overflow-hidden max-h-[90vh] flex flex-col">
+      <!-- Modal Header -->
+      <div class="px-6 py-5 bg-[#161B22] border-b border-zinc-800 flex items-start justify-between gap-4">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-1.5">
+            <span id="modal-category" class="font-mono text-xs text-[#22D3EE]"></span>
+            <span class="text-zinc-600">&bull;</span>
+            <span id="modal-status" class="font-mono text-xs text-[#34D399]"></span>
+          </div>
+          <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-[#F4F4F5] tracking-tight"></h3>
+        </div>
+        <button
+          id="modal-close-btn"
+          type="button"
+          class="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE]"
+          aria-label="Close architecture modal"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 space-y-5 overflow-y-auto">
+        <!-- System Pipeline Diagram (ASCII / Node Flow) -->
+        <div>
+          <h4 class="font-mono text-xs uppercase tracking-wider text-[#22D3EE] font-semibold mb-2">System Pipeline Diagram</h4>
+          <pre id="modal-diagram" class="p-4 rounded-xl bg-[#09090B] border border-zinc-800 font-mono text-[11px] sm:text-xs text-[#34D399] leading-relaxed overflow-x-auto"></pre>
+        </div>
+
+        <!-- Key Engineering Decisions -->
+        <div>
+          <h4 class="font-mono text-xs uppercase tracking-wider text-[#22D3EE] font-semibold mb-2">Key Engineering Decisions</h4>
+          <ul id="modal-decisions" class="space-y-2 text-sm text-zinc-300"></ul>
+        </div>
+
+        <!-- Testing & Validation Approach -->
+        <div class="p-4 rounded-xl bg-[#161B22] border border-[#A78BFA]/40">
+          <h4 class="font-mono text-xs uppercase tracking-wider text-[#A78BFA] font-semibold mb-1.5">Testing &amp; Validation Approach</h4>
+          <p id="modal-validation" class="text-sm text-zinc-300 leading-relaxed"></p>
+        </div>
+
+        <!-- Stack -->
+        <div>
+          <h4 class="font-mono text-xs uppercase tracking-wider text-zinc-500 font-semibold mb-2">Stack</h4>
+          <div id="modal-stack" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-[#161B22] border-t border-zinc-800 flex items-center justify-between gap-3">
+        <a
+          id="modal-repo-link"
+          href="https://github.com/Noshaba-Fatima"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700 bg-[#111318] hover:bg-zinc-800 text-[#F4F4F5] hover:text-[#22D3EE] font-mono text-xs font-semibold transition-colors"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+          <span>View Repository</span>
+        </a>
+        <button
+          id="modal-done-btn"
+          type="button"
+          class="px-5 py-2 rounded-lg bg-[#22D3EE] hover:bg-[#38BDF8] text-[#09090B] font-mono text-xs font-bold transition-colors"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- TOAST FEEDBACK NOTIFICATION                                           -->
+  <!-- ===================================================================== -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-50 translate-y-4 opacity-0 pointer-events-none transition-all duration-200 bg-[#161B22] text-[#F4F4F5] border border-[#22D3EE]/50 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2.5 font-mono text-xs"
+  >
+    <span class="w-2 h-2 rounded-full bg-[#34D399]"></span>
+    <span id="toast-message">Copied! fatimanoshaba032@gmail.com</span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- VANILLA JAVASCRIPT INTERACTIVITY                                      -->
+  <!-- ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      const CONTACT_EMAIL = 'fatimanoshaba032@gmail.com';
+
+      // ===================================================================
+      // 1. HERO INTERACTIVE IDE CODE SAMPLES + RUNNABLE TERMINAL OUTPUTS
+      // ===================================================================
+      const CODE_SAMPLES = {
+        noshaba_fatima: {
+          filepath: 'noshaba_fatima.py',
+          raw: `from dataclasses import dataclass, field
+
+@dataclass(frozen=True)
+class NoshabaFatima:
+    role: str = "Generative AI & Data Science Engineer"
+    education: str = "M.Sc. Data Science @ Integral University (2025-2027)"
+    location: tuple[str, ...] = ("Lucknow, IN", "Remote")
+
+    strengths: dict[str, list[str]] = field(default_factory=lambda: {
+        "agentic_ai":   ["LangGraph", "MCP Client/Server", "Stateful Tool Routing"],
+        "rag_llmops":   ["FAISS Vector Search", "Pytest Suites", "LangSmith (In Progress)"],
+        "applied_ml":   ["Scikit-Learn", "SHAP Explainability", "Statistical Forecasting"],
+        "engineering":  ["Python", "FastAPI", "SQL", "Docker", "Streamlit"],
+    })
+
+    def solve(self, problem: str) -> list[str]:
+        return [
+            "01. benchmark_deterministic_baseline(data)",
+            "02. enforce_typed_schemas(Pydantic)",
+            "03. evaluate_retriever_and_generator(golden_set)",
+            "04. ship_tested_artifact(pytest, docker)",
+        ]
+
+if __name__ == "__main__":
+    me = NoshabaFatima()
+    assert "LangGraph" in me.strengths["agentic_ai"]
+    print(f"[READY] {me.role} | Verified Builds: 5")`,
+          lines: [
+            '<span class="text-[#A78BFA]">from</span> dataclasses <span class="text-[#A78BFA]">import</span> dataclass, field',
+            '',
+            '<span class="text-[#F59E0B]">@dataclass</span>(frozen=<span class="text-[#F59E0B]">True</span>)',
+            '<span class="text-[#A78BFA]">class</span> <span class="text-[#22D3EE]">NoshabaFatima</span>:',
+            '    role: <span class="text-[#22D3EE]">str</span> = <span class="text-[#34D399]">"Generative AI &amp; Data Science Engineer"</span>',
+            '    education: <span class="text-[#22D3EE]">str</span> = <span class="text-[#34D399]">"M.Sc. Data Science @ Integral University (2025-2027)"</span>',
+            '    location: <span class="text-[#22D3EE]">tuple</span>[<span class="text-[#22D3EE]">str</span>, ...] = (<span class="text-[#34D399]">"Lucknow, IN"</span>, <span class="text-[#34D399]">"Remote"</span>)',
+            '',
+            '    strengths: <span class="text-[#22D3EE]">dict</span>[<span class="text-[#22D3EE]">str</span>, <span class="text-[#22D3EE]">list</span>[<span class="text-[#22D3EE]">str</span>]] = field(default_factory=<span class="text-[#A78BFA]">lambda</span>: {',
+            '        <span class="text-[#34D399]">"agentic_ai"</span>:   [<span class="text-[#34D399]">"LangGraph"</span>, <span class="text-[#34D399]">"MCP Client/Server"</span>, <span class="text-[#34D399]">"Stateful Tool Routing"</span>],',
+            '        <span class="text-[#34D399]">"rag_llmops"</span>:   [<span class="text-[#34D399]">"FAISS Vector Search"</span>, <span class="text-[#34D399]">"Pytest Suites"</span>, <span class="text-[#34D399]">"LangSmith (In Progress)"</span>],',
+            '        <span class="text-[#34D399]">"applied_ml"</span>:   [<span class="text-[#34D399]">"Scikit-Learn"</span>, <span class="text-[#34D399]">"SHAP Explainability"</span>, <span class="text-[#34D399]">"Statistical Forecasting"</span>],',
+            '        <span class="text-[#34D399]">"engineering"</span>:  [<span class="text-[#34D399]">"Python"</span>, <span class="text-[#34D399]">"FastAPI"</span>, <span class="text-[#34D399]">"SQL"</span>, <span class="text-[#34D399]">"Docker"</span>, <span class="text-[#34D399]">"Streamlit"</span>],',
+            '    })',
+            '',
+            '    <span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">solve</span>(<span class="text-[#F59E0B]">self</span>, problem: <span class="text-[#22D3EE]">str</span>) -&gt; <span class="text-[#22D3EE]">list</span>[<span class="text-[#22D3EE]">str</span>]:',
+            '        <span class="text-[#A78BFA]">return</span> [',
+            '            <span class="text-[#34D399]">"01. benchmark_deterministic_baseline(data)"</span>,',
+            '            <span class="text-[#34D399]">"02. enforce_typed_schemas(Pydantic)"</span>,',
+            '            <span class="text-[#34D399]">"03. evaluate_retriever_and_generator(golden_set)"</span>,',
+            '            <span class="text-[#34D399]">"04. ship_tested_artifact(pytest, docker)"</span>,',
+            '        ]',
+            '',
+            '<span class="text-[#A78BFA]">if</span> __name__ == <span class="text-[#34D399]">"__main__"</span>:',
+            '    me = NoshabaFatima()',
+            '    <span class="text-[#A78BFA]">assert</span> <span class="text-[#34D399]">"LangGraph"</span> <span class="text-[#A78BFA]">in</span> me.strengths[<span class="text-[#34D399]">"agentic_ai"</span>]',
+            '    <span class="text-[#22D3EE]">print</span>(<span class="text-[#34D399]">f"[READY] {me.role} | Verified Builds: 5"</span>)'
+          ],
+          runOutput: [
+            { tag: '[OK]', color: 'text-[#34D399]', text: 'Loaded profile: Noshaba Fatima' },
+            { tag: '[OK]', color: 'text-[#22D3EE]', text: 'Verified strengths: agentic_ai, rag_llmops, applied_ml, engineering' },
+            { tag: '[READY]', color: 'text-[#34D399]', text: '5 verified builds | Open to Internships & Entry-Level Roles' }
+          ]
+        },
+        talentlens_graph: {
+          filepath: 'talentlens_graph.py',
+          raw: `from typing import TypedDict, Literal
+from pydantic import BaseModel, Field
+from langgraph.graph import StateGraph, END
+from langsmith import traceable
+
+class AssessmentPlan(BaseModel):
+    candidate_score: float = Field(ge=0.0, le=100.0)
+    confidence: float = Field(ge=0.0, le=1.0)
+    rubric_breakdown: dict[str, float]
+    retry_count: int = 0
+
+class TalentLensState(TypedDict):
+    resume_payload: str
+    plan: AssessmentPlan | None
+    docx_exported: bool
+
+def retry_guardrail(state: TalentLensState) -> Literal["retry", "export_docx"]:
+    plan = state["plan"]
+    if (not plan or plan.confidence < 0.75) and (not plan or plan.retry_count < 2):
+        return "retry"
+    return "export_docx"
+
+@traceable(name="talentlens_pipeline")
+def build_talentlens_graph(score_node, export_node):
+    graph = StateGraph(TalentLensState)
+    graph.add_node("score", score_node)
+    graph.add_node("export_docx", export_node)
+    graph.set_entry_point("score")
+    graph.add_conditional_edges("score", retry_guardrail, {"retry": "score", "export_docx": "export_docx"})
+    graph.add_edge("export_docx", END)
+    return graph.compile()`,
+          lines: [
+            '<span class="text-[#A78BFA]">from</span> typing <span class="text-[#A78BFA]">import</span> TypedDict, Literal',
+            '<span class="text-[#A78BFA]">from</span> pydantic <span class="text-[#A78BFA]">import</span> BaseModel, Field',
+            '<span class="text-[#A78BFA]">from</span> langgraph.graph <span class="text-[#A78BFA]">import</span> StateGraph, END',
+            '<span class="text-[#A78BFA]">from</span> langsmith <span class="text-[#A78BFA]">import</span> traceable',
+            '',
+            '<span class="text-[#A78BFA]">class</span> <span class="text-[#22D3EE]">AssessmentPlan</span>(BaseModel):',
+            '    candidate_score: <span class="text-[#22D3EE]">float</span> = Field(ge=<span class="text-[#F59E0B]">0.0</span>, le=<span class="text-[#F59E0B]">100.0</span>)',
+            '    confidence: <span class="text-[#22D3EE]">float</span> = Field(ge=<span class="text-[#F59E0B]">0.0</span>, le=<span class="text-[#F59E0B]">1.0</span>)',
+            '    rubric_breakdown: <span class="text-[#22D3EE]">dict</span>[<span class="text-[#22D3EE]">str</span>, <span class="text-[#22D3EE]">float</span>]',
+            '    retry_count: <span class="text-[#22D3EE]">int</span> = <span class="text-[#F59E0B]">0</span>',
+            '',
+            '<span class="text-[#A78BFA]">class</span> <span class="text-[#22D3EE]">TalentLensState</span>(TypedDict):',
+            '    resume_payload: <span class="text-[#22D3EE]">str</span>',
+            '    plan: AssessmentPlan | <span class="text-[#F59E0B]">None</span>',
+            '    docx_exported: <span class="text-[#22D3EE]">bool</span>',
+            '',
+            '<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">retry_guardrail</span>(state: TalentLensState) -&gt; Literal[<span class="text-[#34D399]">"retry"</span>, <span class="text-[#34D399]">"export_docx"</span>]:',
+            '    plan = state[<span class="text-[#34D399]">"plan"</span>]',
+            '    <span class="text-[#A78BFA]">if</span> (<span class="text-[#A78BFA]">not</span> plan <span class="text-[#A78BFA]">or</span> plan.confidence &lt; <span class="text-[#F59E0B]">0.75</span>) <span class="text-[#A78BFA]">and</span> (<span class="text-[#A78BFA]">not</span> plan <span class="text-[#A78BFA]">or</span> plan.retry_count &lt; <span class="text-[#F59E0B]">2</span>):',
+            '        <span class="text-[#A78BFA]">return</span> <span class="text-[#34D399]">"retry"</span>',
+            '    <span class="text-[#A78BFA]">return</span> <span class="text-[#34D399]">"export_docx"</span>',
+            '',
+            '<span class="text-[#F59E0B]">@traceable</span>(name=<span class="text-[#34D399]">"talentlens_pipeline"</span>)',
+            '<span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">build_talentlens_graph</span>(score_node, export_node):',
+            '    graph = StateGraph(TalentLensState)',
+            '    graph.add_node(<span class="text-[#34D399]">"score"</span>, score_node)',
+            '    graph.add_node(<span class="text-[#34D399]">"export_docx"</span>, export_node)',
+            '    graph.set_entry_point(<span class="text-[#34D399]">"score"</span>)',
+            '    graph.add_conditional_edges(<span class="text-[#34D399]">"score"</span>, retry_guardrail, {<span class="text-[#34D399]">"retry"</span>: <span class="text-[#34D399]">"score"</span>, <span class="text-[#34D399]">"export_docx"</span>: <span class="text-[#34D399]">"export_docx"</span>})',
+            '    graph.add_edge(<span class="text-[#34D399]">"export_docx"</span>, END)',
+            '    <span class="text-[#A78BFA]">return</span> graph.compile()'
+          ],
+          runOutput: [
+            { tag: '[OK]', color: 'text-[#34D399]', text: 'Compiled StateGraph: score -> retry_guardrail -> export_docx' },
+            { tag: '[OK]', color: 'text-[#22D3EE]', text: 'Pydantic AssessmentPlan schema validated (confidence=0.91, retries=0)' },
+            { tag: '[TRACE]', color: 'text-[#A78BFA]', text: 'LangSmith @traceable hook wired | DOCX report artifact ready' }
+          ]
+        },
+        mcp_protocol: {
+          filepath: 'mcp_protocol.py',
+          raw: `from typing import Any, Callable
+from pydantic import BaseModel
+
+class RPCRequest(BaseModel):
+    jsonrpc: str = "2.0"
+    id: int | str
+    method: str
+    params: dict[str, Any] = {}
+
+class MCPServer:
+    def __init__(self) -> None:
+        self.tools: dict[str, Callable[..., Any]] = {}
+
+    def register_tool(self, name: str, handler: Callable[..., Any]) -> None:
+        self.tools[name] = handler
+
+    def dispatch(self, raw_msg: dict[str, Any]) -> dict[str, Any]:
+        req = RPCRequest.model_validate(raw_msg)
+        if req.method == "initialize":
+            return {"jsonrpc": "2.0", "id": req.id, "result": {"protocolVersion": "2024-11-05"}}
+        if req.method == "tools/list":
+            return {"jsonrpc": "2.0", "id": req.id, "result": {"tools": list(self.tools.keys())}}
+        if req.method in self.tools:
+            return {"jsonrpc": "2.0", "id": req.id, "result": self.tools[req.method](**req.params)}
+        return {"jsonrpc": "2.0", "id": req.id, "error": {"code": -32601, "message": "Method not found"}}`,
+          lines: [
+            '<span class="text-[#A78BFA]">from</span> typing <span class="text-[#A78BFA]">import</span> Any, Callable',
+            '<span class="text-[#A78BFA]">from</span> pydantic <span class="text-[#A78BFA]">import</span> BaseModel',
+            '',
+            '<span class="text-[#A78BFA]">class</span> <span class="text-[#22D3EE]">RPCRequest</span>(BaseModel):',
+            '    jsonrpc: <span class="text-[#22D3EE]">str</span> = <span class="text-[#34D399]">"2.0"</span>',
+            '    id: <span class="text-[#22D3EE]">int</span> | <span class="text-[#22D3EE]">str</span>',
+            '    method: <span class="text-[#22D3EE]">str</span>',
+            '    params: <span class="text-[#22D3EE]">dict</span>[<span class="text-[#22D3EE]">str</span>, Any] = {}',
+            '',
+            '<span class="text-[#A78BFA]">class</span> <span class="text-[#22D3EE]">MCPServer</span>:',
+            '    <span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">__init__</span>(<span class="text-[#F59E0B]">self</span>) -&gt; <span class="text-[#F59E0B]">None</span>:',
+            '        <span class="text-[#F59E0B]">self</span>.tools: <span class="text-[#22D3EE]">dict</span>[<span class="text-[#22D3EE]">str</span>, Callable[..., Any]] = {}',
+            '',
+            '    <span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">register_tool</span>(<span class="text-[#F59E0B]">self</span>, name: <span class="text-[#22D3EE]">str</span>, handler: Callable[..., Any]) -&gt; <span class="text-[#F59E0B]">None</span>:',
+            '        <span class="text-[#F59E0B]">self</span>.tools[name] = handler',
+            '',
+            '    <span class="text-[#A78BFA]">def</span> <span class="text-[#38BDF8]">dispatch</span>(<span class="text-[#F59E0B]">self</span>, raw_msg: <span class="text-[#22D3EE]">dict</span>[<span class="text-[#22D3EE]">str</span>, Any]) -&gt; <span class="text-[#22D3EE]">dict</span>[<span class="text-[#22D3EE]">str</span>, Any]:',
+            '        req = RPCRequest.model_validate(raw_msg)',
+            '        <span class="text-[#A78BFA]">if</span> req.method == <span class="text-[#34D399]">"initialize"</span>:',
+            '            <span class="text-[#A78BFA]">return</span> {<span class="text-[#34D399]">"jsonrpc"</span>: <span class="text-[#34D399]">"2.0"</span>, <span class="text-[#34D399]">"id"</span>: req.id, <span class="text-[#34D399]">"result"</span>: {<span class="text-[#34D399]">"protocolVersion"</span>: <span class="text-[#34D399]">"2024-11-05"</span>}}',
+            '        <span class="text-[#A78BFA]">if</span> req.method == <span class="text-[#34D399]">"tools/list"</span>:',
+            '            <span class="text-[#A78BFA]">return</span> {<span class="text-[#34D399]">"jsonrpc"</span>: <span class="text-[#34D399]">"2.0"</span>, <span class="text-[#34D399]">"id"</span>: req.id, <span class="text-[#34D399]">"result"</span>: {<span class="text-[#34D399]">"tools"</span>: <span class="text-[#22D3EE]">list</span>(<span class="text-[#F59E0B]">self</span>.tools.keys())}}',
+            '        <span class="text-[#A78BFA]">if</span> req.method <span class="text-[#A78BFA]">in</span> <span class="text-[#F59E0B]">self</span>.tools:',
+            '            <span class="text-[#A78BFA]">return</span> {<span class="text-[#34D399]">"jsonrpc"</span>: <span class="text-[#34D399]">"2.0"</span>, <span class="text-[#34D399]">"id"</span>: req.id, <span class="text-[#34D399]">"result"</span>: <span class="text-[#F59E0B]">self</span>.tools[req.method](**req.params)}',
+            '        <span class="text-[#A78BFA]">return</span> {<span class="text-[#34D399]">"jsonrpc"</span>: <span class="text-[#34D399]">"2.0"</span>, <span class="text-[#34D399]">"id"</span>: req.id, <span class="text-[#34D399]">"error"</span>: {<span class="text-[#34D399]">"code"</span>: -<span class="text-[#F59E0B]">32601</span>, <span class="text-[#34D399]">"message"</span>: <span class="text-[#34D399]">"Method not found"</span>}}'
+          ],
+          runOutput: [
+            { tag: '[OK]', color: 'text-[#34D399]', text: 'JSON-RPC 2.0 handshake complete (protocolVersion: 2024-11-05)' },
+            { tag: '[OK]', color: 'text-[#22D3EE]', text: 'tools/list discovered registered handlers via Pydantic schema' },
+            { tag: '[READY]', color: 'text-[#34D399]', text: 'Decoupled MCP client-server execution verified (exit 0)' }
+          ]
+        }
+      };
+
+      let activeCodeKey = 'noshaba_fatima';
+      const ideCodeDisplay = document.getElementById('ide-code-display');
+      const ideFilepath = document.getElementById('ide-filepath');
+      const codeTabButtons = document.querySelectorAll('.code-tab-btn');
+      const runCodeBtn = document.getElementById('run-code-btn');
+      const terminalOutput = document.getElementById('terminal-output');
+      const terminalBadge = document.getElementById('terminal-badge');
+      const terminalCmdFile = document.getElementById('terminal-cmd-file');
+      const copyCodeBtn = document.getElementById('copy-code-btn');
+      const copyCodeLabel = document.getElementById('copy-code-label');
+
+      function renderCodeTab(tabKey) {
+        const sample = CODE_SAMPLES[tabKey];
+        if (!sample || !ideCodeDisplay) return;
+        activeCodeKey = tabKey;
+
+        if (ideFilepath) ideFilepath.textContent = sample.filepath;
+        if (terminalCmdFile) terminalCmdFile.textContent = sample.filepath;
+
+        ideCodeDisplay.innerHTML = sample.lines
+          .map((lineHtml, idx) => {
+            const lineNumber = String(idx + 1).padStart(2, ' ');
+            return (
+              '<div class="flex hover:bg-white/[0.03] px-1 rounded">' +
+              '<span class="select-none w-8 text-right pr-4 text-zinc-600 shrink-0">' + lineNumber + '</span>' +
+              '<span class="whitespace-pre text-zinc-200">' + (lineHtml || ' ') + '</span>' +
+              '</div>'
+            );
+          })
+          .join('');
+
+        codeTabButtons.forEach((btn) => {
+          const isSelected = btn.getAttribute('data-code-tab') === tabKey;
+          btn.setAttribute('aria-selected', String(isSelected));
+          btn.classList.toggle('border-t-[#22D3EE]', isSelected);
+          btn.classList.toggle('bg-[#111318]', isSelected);
+          btn.classList.toggle('text-[#F4F4F5]', isSelected);
+          btn.classList.toggle('border-t-transparent', !isSelected);
+          btn.classList.toggle('text-zinc-400', !isSelected);
+        });
+      }
+
+      let runTimers = [];
+      function executeActiveCode() {
+        const sample = CODE_SAMPLES[activeCodeKey];
+        if (!sample || !terminalOutput) return;
+
+        runTimers.forEach((t) => clearTimeout(t));
+        runTimers = [];
+
+        if (terminalBadge) {
+          terminalBadge.textContent = 'Running...';
+          terminalBadge.className = 'px-2 py-0.5 rounded bg-[#22D3EE]/15 border border-[#22D3EE]/40 text-[#22D3EE] text-[10px]';
+        }
+
+        terminalOutput.innerHTML =
+          '<div class="text-zinc-300"><span class="text-[#34D399]">$</span> python ' +
+          sample.filepath +
+          '</div>';
+
+        sample.runOutput.forEach((line, index) => {
+          const timer = setTimeout(() => {
+            const row = document.createElement('div');
+            row.className = 'flex items-start gap-2';
+            row.innerHTML =
+              '<span class="' + line.color + ' font-semibold shrink-0">' + line.tag + '</span>' +
+              '<span class="text-zinc-200">' + line.text + '</span>';
+            terminalOutput.appendChild(row);
+
+            if (index === sample.runOutput.length - 1 && terminalBadge) {
+              terminalBadge.textContent = 'exit 0 • 38ms';
+              terminalBadge.className = 'px-2 py-0.5 rounded bg-[#34D399]/15 border border-[#34D399]/40 text-[#34D399] text-[10px] font-semibold';
+            }
+          }, (index + 1) * 180);
+          runTimers.push(timer);
+        });
+      }
+
+      codeTabButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          renderCodeTab(btn.getAttribute('data-code-tab'));
+          executeActiveCode();
+        });
+      });
+
+      if (runCodeBtn) {
+        runCodeBtn.addEventListener('click', executeActiveCode);
+      }
+
+      renderCodeTab('noshaba_fatima');
+
+      // ===================================================================
+      // 2. ARCHITECTURE MODAL DATA (ASCII PIPELINES + ENGINEERING NOTES)
+      // ===================================================================
+      const PROJECT_NOTES = {
+        talentlens: {
+          title: 'TalentLens AI',
+          category: 'GenAI & Agents',
+          status: 'LangSmith Tracing In Progress',
+          repoUrl: 'https://github.com/Noshaba-Fatima/TalentLens-AI',
+          diagram:
+`[Resume Input] ──▶ [LangGraph StateGraph] ──▶ [Groq / Gemini Rubric Scorer]
+                          │                               │
+                          ▼                               ▼
+                 [Confidence Guardrail] ◀──── [Pydantic Schema Check]
+                          │
+                          ▼
+              [Programmatic DOCX Report] + [Streamlit UI]`,
+          decisions: [
+            'Modeled candidate evaluation as an explicit LangGraph StateGraph with conditional retry routing when model confidence drops below threshold.',
+            'Enforced Pydantic v2 schemas around Groq and Gemini outputs so downstream DOCX report generation never parses raw strings.',
+            'Instrumenting LangSmith @traceable spans across nodes to measure per-step latency and token usage.'
+          ],
+          validation:
+            'Covered scoring logic, state transitions, and edge-case inputs with automated Pytest test suites prior to Streamlit deployment.',
+          stack: ['LangGraph', 'Groq', 'Gemini', 'Streamlit', 'Pytest', 'LangSmith (WIP)']
+        },
+        'mcp-architecture': {
+          title: 'MCP Client & Server Architecture',
+          category: 'GenAI & Agents',
+          status: 'Custom Protocol Implementation',
+          repoUrl: 'https://github.com/Noshaba-Fatima',
+          diagram:
+`[LLM Host / Agent] ──▶ [MCP Client] ══(JSON-RPC 2.0)══▶ [MCP Server]
+                                                             │
+                          ┌──────────────────────────────────┤
+                          ▼                                  ▼
+                 [tools/list Discovery]            [Pydantic Arg Validation]
+                                                             │
+                                                             ▼
+                                                  [Isolated Tool Execution]`,
+          decisions: [
+            'Built the Model Context Protocol client-server handshake and JSON-RPC 2.0 message framing from scratch to decouple agent reasoning from tool execution.',
+            'Implemented dynamic tools/list capability discovery so LLM hosts inspect available schemas at runtime rather than hardcoding bindings.',
+            'Validated incoming tool parameters via Pydantic models and returned standard JSON-RPC error codes on invalid payloads.'
+          ],
+          validation:
+            'Verified protocol handshake, tool discovery, malformed-payload error handling, and round-trip tool execution via integration tests.',
+          stack: ['Python', 'Model Context Protocol (MCP)', 'JSON-RPC 2.0', 'Pydantic']
+        },
+        'rag-screener': {
+          title: 'AI Resume Screener & RAG Evaluation Pipeline',
+          category: 'GenAI & Agents',
+          status: 'Component Evals In Progress',
+          repoUrl: 'https://github.com/Noshaba-Fatima',
+          diagram:
+`[PDF Resumes] ──▶ [Parser & Semantic Chunker] ──▶ [Dense Embeddings]
+                                                          │
+                                                          ▼
+[Evaluation Suite] ◀── [LLM Scorer / Generator] ◀── [FAISS Vector Index]
+ (30 Synthetic Resumes + Retriever Recall@K / Generator Faithfulness)`,
+          decisions: [
+            'Designed semantic chunking boundaries around resume sections (skills, experience, projects) to preserve context inside FAISS vector indexes.',
+            'Separated retrieval scoring from LLM candidate evaluation so ranking bottlenecks can be diagnosed independently.',
+            'Expanding the evaluation harness to score retriever Recall@K/Precision alongside generator faithfulness.'
+          ],
+          validation:
+            'Benchmarked end-to-end retrieval and candidate ranking accuracy against a curated test set of 30 synthetic resumes.',
+          stack: ['Python', 'FAISS', 'Embeddings', 'RAG Evaluation', 'Component Evals (WIP)']
+        },
+        'uidai-anomaly': {
+          title: 'UIDAI Aadhaar Anomaly Analysis',
+          category: 'ML & Data Science',
+          status: 'UIDAI Data Hackathon 2026',
+          repoUrl: 'https://github.com/Noshaba-Fatima/Aadhar-data-analysis',
+          diagram:
+`[Aadhaar Demographic Logs] ──▶ [Pandas Cleaning & Aggregation]
+                                         │
+                 ┌───────────────────────┴───────────────────────┐
+                 ▼                                               ▼
+  [Anomaly Severity Classifier]                   [Time-Series Forecaster]
+   (Scikit-Learn Multi-Tier)                       (Regional Trend Projection)`,
+          decisions: [
+            'Engineered regional demographic ratios and rolling variance features to handle skewed administrative enrollment distributions.',
+            'Framed anomaly detection as multi-tier severity classification to prioritize actionable operational spikes over minor noise.',
+            'Paired classification with time-series forecasting to anticipate upcoming regional enrollment surges.'
+          ],
+          validation:
+            'Validated severity classification thresholds and time-series forecast residuals using temporal train/validation splits.',
+          stack: ['Python', 'Pandas', 'Scikit-Learn', 'Time-Series Forecasting']
+        },
+        'exam-predictor': {
+          title: 'Student Exam Score Predictor',
+          category: 'ML & Data Science',
+          status: 'Deployed on Streamlit Cloud',
+          repoUrl: 'https://github.com/Noshaba-Fatima/student-score-predictor',
+          diagram:
+`[Tabular Student Features] ──▶ [Scikit-Learn Preprocessing Pipeline]
+                                         │
+                 ┌───────────────────────┴───────────────────────┐
+                 ▼                                               ▼
+   [Linear Regression Baseline]                    [Random Forest Regressor]
+                 │                                               │
+                 └───────────────────────┬───────────────────────┘
+                                         ▼
+                        [Streamlit Cloud Inference App]`,
+          decisions: [
+            'Established an interpretable Linear Regression baseline first before benchmarking Random Forest ensembles.',
+            'Encapsulated feature encoding and scaling inside a unified Scikit-Learn pipeline to eliminate training-serving skew.',
+            'Deployed an interactive inference web app on Streamlit Cloud for real-time what-if score exploration.'
+          ],
+          validation:
+            'Evaluated models using cross-validated RMSE and competitive benchmark scoring prior to Streamlit Cloud deployment.',
+          stack: ['Python', 'Scikit-Learn', 'Random Forest', 'Linear Regression', 'Streamlit Cloud']
+        }
+      };
+
+      // ===================================================================
+      // 3. MOBILE NAVIGATION TOGGLE
+      // ===================================================================
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconHamburger = document.getElementById('icon-hamburger');
+      const iconClose = document.getElementById('icon-close');
+
+      function setMobileMenu(open) {
+        if (!mobileMenu || !mobileMenuBtn) return;
+        mobileMenu.classList.toggle('hidden', !open);
+        iconHamburger.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+        mobileMenuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          setMobileMenu(mobileMenu.classList.contains('hidden'));
+        });
+      }
+
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => setMobileMenu(false));
+      });
+
+      // ===================================================================
+      // 4. PROJECT CATEGORY FILTERING
+      // ===================================================================
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const selected = btn.getAttribute('data-filter');
+
+          filterButtons.forEach((b) => {
+            const isActive = b === btn;
+            b.setAttribute('aria-pressed', String(isActive));
+            b.classList.toggle('bg-[#22D3EE]', isActive);
+            b.classList.toggle('text-[#09090B]', isActive);
+            b.classList.toggle('font-semibold', isActive);
+            b.classList.toggle('text-[#A1A1AA]', !isActive);
+            b.classList.toggle('hover:text-white', !isActive);
+            b.classList.toggle('hover:bg-zinc-800/70', !isActive);
+          });
+
+          projectCards.forEach((card) => {
+            const category = card.getAttribute('data-category');
+            const matches = selected === 'all' || category === selected;
+            card.classList.toggle('hidden', !matches);
+          });
+        });
+      });
+
+      // ===================================================================
+      // 5. INTERACTIVE "INSPECT ARCHITECTURE" MODAL
+      // ===================================================================
+      const modal = document.getElementById('project-modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalCategory = document.getElementById('modal-category');
+      const modalStatus = document.getElementById('modal-status');
+      const modalDiagram = document.getElementById('modal-diagram');
+      const modalDecisions = document.getElementById('modal-decisions');
+      const modalValidation = document.getElementById('modal-validation');
+      const modalStack = document.getElementById('modal-stack');
+      const modalRepoLink = document.getElementById('modal-repo-link');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      const modalDoneBtn = document.getElementById('modal-done-btn');
+
+      function openProjectModal(projectKey) {
+        const data = PROJECT_NOTES[projectKey];
+        if (!data || !modal) return;
+
+        modalTitle.textContent = data.title;
+        modalCategory.textContent = data.category;
+        modalStatus.textContent = data.status;
+        if (modalDiagram) modalDiagram.textContent = data.diagram;
+        if (modalValidation) modalValidation.textContent = data.validation;
+        if (modalRepoLink) modalRepoLink.setAttribute('href', data.repoUrl);
+
+        if (modalDecisions) {
+          modalDecisions.innerHTML = '';
+          data.decisions.forEach((item) => {
+            const li = document.createElement('li');
+            li.className = 'flex items-start gap-2.5';
+            const bullet = document.createElement('span');
+            bullet.className = 'mt-1.5 w-1.5 h-1.5 rounded-full bg-[#34D399] shrink-0';
+            const text = document.createElement('span');
+            text.textContent = item;
+            li.appendChild(bullet);
+            li.appendChild(text);
+            modalDecisions.appendChild(li);
+          });
+        }
+
+        modalStack.innerHTML = '';
+        data.stack.forEach((tech) => {
+          const pill = document.createElement('span');
+          pill.className = 'px-2.5 py-1 rounded-md bg-[#161B22] border border-zinc-800 text-zinc-200 font-mono text-xs';
+          pill.textContent = tech;
+          modalStack.appendChild(pill);
+        });
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeProjectModal() {
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          openProjectModal(trigger.getAttribute('data-open-modal'));
+        });
+      });
+
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeProjectModal);
+      if (modalDoneBtn) modalDoneBtn.addEventListener('click', closeProjectModal);
+
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeProjectModal();
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+          closeProjectModal();
+        }
+      });
+
+      // ===================================================================
+      // 6. CLIPBOARD HELPERS (COPY EMAIL & COPY CODE) + TOAST FEEDBACK
+      // ===================================================================
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      let toastTimer = null;
+
+      function showToast(message) {
+        if (!toast || !toastMessage) return;
+        toastMessage.textContent = message;
+        toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+        toast.classList.add('opacity-100', 'translate-y-0');
+
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+          toast.classList.remove('opacity-100', 'translate-y-0');
+        }, 2600);
+      }
+
+      function copyTextToClipboard(text) {
+        try {
+          const tempInput = document.createElement('textarea');
+          tempInput.value = text;
+          tempInput.setAttribute('readonly', '');
+          tempInput.style.position = 'fixed';
+          tempInput.style.opacity = '0';
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          tempInput.setSelectionRange(0, 99999);
+          const success = document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          return success;
+        } catch (err) {
+          return false;
+        }
+      }
+
+      document.querySelectorAll('[data-copy-email]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          copyTextToClipboard(CONTACT_EMAIL);
+          const labelSpan = btn.querySelector('.copy-label');
+          const defaultLabel = btn.getAttribute('data-default-label') || 'Copy Email';
+
+          if (labelSpan) {
+            labelSpan.textContent = 'Copied!';
+            setTimeout(() => {
+              labelSpan.textContent = defaultLabel;
+            }, 2200);
+          }
+
+          showToast('Copied! ' + CONTACT_EMAIL);
+        });
+      });
+
+      if (copyCodeBtn) {
+        copyCodeBtn.addEventListener('click', () => {
+          const sample = CODE_SAMPLES[activeCodeKey];
+          if (!sample) return;
+          copyTextToClipboard(sample.raw);
+          if (copyCodeLabel) {
+            copyCodeLabel.textContent = 'Copied!';
+            setTimeout(() => {
+              copyCodeLabel.textContent = 'Copy';
+            }, 2000);
+          }
+          showToast('Copied ' + sample.filepath);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
